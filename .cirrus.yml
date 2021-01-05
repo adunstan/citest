@@ -3,9 +3,10 @@ task:
   windows_container:
     image: cirrusci/windowsservercore:cmake
   install_script:
-    # - choco install -y winflexbison diffutils
-    # - rename c:\ProgramData\chocolatey\bin\win_flex.exe flex.exe
-    # - rename c:\ProgramData\chocolatey\bin\win_bison.exe bison.exe
+    - choco install -y winflexbison diffutils
+    - rename c:\ProgramData\chocolatey\bin\win_flex.exe flex.exe
+    - rename c:\ProgramData\chocolatey\bin\win_bison.exe bison.exe
+    - choco install strawberryperl
     - choco install --force -y visualstudio2019-workload-vctools --package-parameters "--includeOptional"
     - choco list --localonly
   build_script:
@@ -13,7 +14,10 @@ task:
       - set
       - cd "c:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Auxiliary/Build"
       - vcvarsall x64
+      - @echo on
+      - cd C:\Users\ContainerAdministrator\AppData\Local\Temp\cirrus-ci-build
       - set
+      - perl -v
       - msbuild pgsql.sln
 #  test_script:
 #    - cd src\tools\msvc && vcregress check
