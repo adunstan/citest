@@ -2,8 +2,6 @@ task:
   name: Windows
   windows_container:
     image: cirrusci/windowsservercore:cmake
-  env:
-    CIRRUS_SHELL: powershell
   install_script:
     # - choco install -y winflexbison diffutils
     # - rename c:\ProgramData\chocolatey\bin\win_flex.exe flex.exe
@@ -11,8 +9,9 @@ task:
     # - choco install -y visualstudio2019-workload-vctools --package-parameters "--includeOptional"
       - choco list --localonly
   build_script:
-    - SET "PATH=%PATH%;C:\Perl64\bin;c:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin"
-#    - perl buildsetup.pl
+    # - SET "PATH=%PATH%;C:\Perl64\bin;c:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin"
+    # - perl buildsetup.pl
+    - "c:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\vcvarsall" amd64
     - msbuild pgsql.sln
 #  test_script:
 #    - cd src\tools\msvc && vcregress check
