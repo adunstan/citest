@@ -9,12 +9,7 @@ task:
     # - rename c:\ProgramData\chocolatey\bin\win_flex.exe flex.exe
     # - rename c:\ProgramData\chocolatey\bin\win_bison.exe bison.exe
     # - choco install -y visualstudio2019-workload-vctools --package-parameters "--includeOptional"
-    - $AdminKey = "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}"
-    - $UserKey = "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A8-37EF-4b3f-8CFC-4F3A74704073}"
-    - Set-ItemProperty -Path $AdminKey -Name "IsInstalled" -Value 0
-    - Set-ItemProperty -Path $UserKey -Name "IsInstalled" -Value 0
-
-    - choco install -y activeperl
+      - choco list --localonly
   build_script:
     - SET "PATH=%PATH%;C:\Perl64\bin;c:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin"
 #    - perl buildsetup.pl
