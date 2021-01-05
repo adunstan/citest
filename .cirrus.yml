@@ -7,9 +7,8 @@ task:
     - choco install -y winflexbison diffutils
     - rename c:\ProgramData\chocolatey\bin\win_flex.exe flex.exe
     - rename c:\ProgramData\chocolatey\bin\win_bison.exe bison.exe
-#    - choco install -y strawberryperl
-#    - choco install --force -y visualstudio2019-workload-vctools --package-parameters "--includeOptional"
-    - choco install -y visualstudio2019buildtools
+    - choco install -y strawberryperl
+    - choco install --force -y visualstudio2019-workload-vctools --package-parameters "--includeOptional"
     - choco list --localonly
   build_script:
       - cd
@@ -21,5 +20,3 @@ task:
       - set
       - perl -v
       - msbuild pgsql.sln
-#  test_script:
-#    - cd src\tools\msvc && vcregress check
