@@ -5,7 +5,7 @@ task:
   env:
     CIRRUS_SHELL: powershell
   install_script:
-    - choco install -y winflexbison diffutils
+    # - choco install -y winflexbison diffutils
     # - rename c:\ProgramData\chocolatey\bin\win_flex.exe flex.exe
     # - rename c:\ProgramData\chocolatey\bin\win_bison.exe bison.exe
     # - choco install -y visualstudio2019-workload-vctools --package-parameters "--includeOptional"
