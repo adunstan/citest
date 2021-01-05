@@ -11,7 +11,9 @@ task:
   build_script:
     # - SET "PATH=%PATH%;C:\Perl64\bin;c:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin"
     # - perl buildsetup.pl
+    - set
     - "c:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\vcvarsall" amd64
+    - set
     - msbuild pgsql.sln
 #  test_script:
 #    - cd src\tools\msvc && vcregress check
