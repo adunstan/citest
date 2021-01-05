@@ -14,7 +14,7 @@ task:
       - set
       - cd "c:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Auxiliary/Build"
       - vcvarsall x64
-      - @echo on
+      - echo on
       - cd C:\Users\ContainerAdministrator\AppData\Local\Temp\cirrus-ci-build
       - set
       - perl -v
