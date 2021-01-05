@@ -1,0 +1,15 @@
+task:
+  name: Windows
+  windows_container:
+    image: cirrusci/windowsservercore:cmake
+  install_script:
+    - choco install -y winflexbison activeperl diffutils
+    - rename c:\ProgramData\chocolatey\bin\win_flex.exe flex.exe
+    - rename c:\ProgramData\chocolatey\bin\win_bison.exe bison.exe
+    - choco install -y microsoft-build-tools
+  build_script:
+    - SET "PATH=%PATH%;C:\Perl64\bin;c:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin"
+#    - perl buildsetup.pl
+    - msbuild pgsql.sln
+#  test_script:
+#    - cd src\tools\msvc && vcregress check
