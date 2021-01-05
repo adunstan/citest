@@ -2,6 +2,8 @@ task:
   name: Windows
   windows_container:
     image: cirrusci/windowsservercore:cmake
+  env:
+    CIRRUS_SHELL: powershell
   install_script:
     - choco install -y winflexbison diffutils
     - rename c:\ProgramData\chocolatey\bin\win_flex.exe flex.exe
