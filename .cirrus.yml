@@ -3,10 +3,11 @@ task:
   windows_container:
     image: cirrusci/windowsservercore:cmake
   install_script:
-    - choco install -y -UseBasicParsing winflexbison activeperl diffutils
+    - choco install -y winflexbison diffutils
     - rename c:\ProgramData\chocolatey\bin\win_flex.exe flex.exe
     - rename c:\ProgramData\chocolatey\bin\win_bison.exe bison.exe
-    - choco install -y microsoft-build-tools
+    - choco install -y visualstudio2019-workload-vctools --package-parameters "--includeOptional"
+    - choco install -y activeperl
   build_script:
     - SET "PATH=%PATH%;C:\Perl64\bin;c:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin"
 #    - perl buildsetup.pl
