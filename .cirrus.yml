@@ -14,7 +14,7 @@ task:
   build_script:
       - cd
       - set
-      - wmic logicaldisk get desription,name
+      - wmic logicaldisk get description,name
       - cd "C:/"
       # - dir /s /b
       - cd "c:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Auxiliary/Build"
