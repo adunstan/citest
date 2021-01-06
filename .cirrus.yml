@@ -3,6 +3,7 @@ task:
   windows_container:
     image: cirrusci/windowsservercore:2019
   install_script:
+    - choco feature disable --name=showDownloadProgress
     - choco list --localonly
     - choco install -y winflexbison diffutils
     - rename c:\ProgramData\chocolatey\bin\win_flex.exe flex.exe
@@ -13,7 +14,7 @@ task:
   build_script:
       - cd
       - set
-      - cd "c:/Program Files (x86)/Microsoft Visual Studio/"
+      - cd "c:/Program Files (x86)"
       - dir /s /b
       - cd "c:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Auxiliary/Build"
       - vcvarsall x64
