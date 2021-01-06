@@ -23,5 +23,5 @@ task:
       - cd C:\Users\ContainerAdministrator\AppData\Local\Temp\cirrus-ci-build
       - set
       - perl -v
-      - nmake /?
+      - ps: nmake /?
       - msbuild pgsql.sln
