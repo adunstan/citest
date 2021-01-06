@@ -8,13 +8,13 @@ task:
     - choco install -y winflexbison diffutils
     - rename c:\ProgramData\chocolatey\bin\win_flex.exe flex.exe
     - rename c:\ProgramData\chocolatey\bin\win_bison.exe bison.exe
-    - choco install -y --no-progress strawberryperl
+#    - choco install -y --no-progress strawberryperl
 #    - choco install --force --no-progress -y visualstudio2019-workload-vctools --package-parameters "--includeOptional"
     - choco list --localonly
   build_script:
       - cd
       - set
-      - cd "c:/Program Files (x86)"
+      - cd "C:/Users/ContainerAdministrator/AppData/Local/Microsoft/WindowsApps"
       - dir /s /b
       - cd "c:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Auxiliary/Build"
       - vcvarsall x64
