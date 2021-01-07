@@ -20,3 +20,6 @@ task:
       - perl -v
       - perl src/tools/msvc/mkvcbuild.pl
       - msbuild pgsql.sln
+  test_script:
+      - set
+      - perl src/tools/msvc/vcregress.pl check
