@@ -9,7 +9,7 @@ task:
     - rename c:\ProgramData\chocolatey\bin\win_flex.exe flex.exe
     - rename c:\ProgramData\chocolatey\bin\win_bison.exe bison.exe
     - choco install -y --no-progress strawberryperl
-    - C:/strawberry/bin/perl -V
+    - C:/strawberry/perl -V
     - foo
     - choco install --force -y visualstudio2019-workload-vctools --package-parameters "--includeOptional"
     - choco list --localonly
