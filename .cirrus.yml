@@ -4,13 +4,10 @@ task:
     image: cirrusci/windowsservercore:cmake
   install_script:
     - choco feature disable --name=showDownloadProgress
-    - choco list --localonly
     - choco install -y winflexbison diffutils
     - rename c:\ProgramData\chocolatey\bin\win_flex.exe flex.exe
     - rename c:\ProgramData\chocolatey\bin\win_bison.exe bison.exe
     - choco install -y --no-progress strawberryperl
-    - C:/strawberry/perl/bin/perl -V
-    - foo
     - choco install --force -y visualstudio2019-workload-vctools --package-parameters "--includeOptional"
     - choco list --localonly
   build_script:
@@ -18,6 +15,8 @@ task:
       - vcvarsall x64
       - echo on
       - cd C:\Users\ContainerAdministrator\AppData\Local\Temp\cirrus-ci-build
+      - set PATH=C:\strawberry\perl\bin;%PATH%
       - set
+      - perl -v
       - perl src/tools/msvc/mkvcbuild.pl
       - msbuild pgsql.sln
