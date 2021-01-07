@@ -21,5 +21,6 @@ task:
       - perl src/tools/msvc/mkvcbuild.pl
       - msbuild pgsql.sln
   test_script:
+      - set PATH=C:\strawberry\perl\bin;%PATH%
       - set
       - perl src/tools/msvc/vcregress.pl check
