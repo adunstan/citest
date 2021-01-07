@@ -8,21 +8,16 @@ task:
     - choco install -y winflexbison diffutils
     - rename c:\ProgramData\chocolatey\bin\win_flex.exe flex.exe
     - rename c:\ProgramData\chocolatey\bin\win_bison.exe bison.exe
-    # - choco install -y --no-progress strawberryperl
+    - choco install -y --no-progress strawberryperl
+    - "C:/strawberry/bin/perl" -V
+    - foo
     - choco install --force -y visualstudio2019-workload-vctools --package-parameters "--includeOptional"
     - choco list --localonly
   build_script:
-      - cd
-      - set
-      - wmic logicaldisk get description,name
-      - cd "C:/Program Files (x86)/Microsoft Visual Studio/"
-      - dir /s /b
       - cd "c:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Auxiliary/Build"
       - vcvarsall x64
       - echo on
       - cd C:\Users\ContainerAdministrator\AppData\Local\Temp\cirrus-ci-build
       - set
-      - perl -V
-      - ps: nmake /?
       - perl src/tools/msvc/mkvcbuild.pl
       - msbuild pgsql.sln
