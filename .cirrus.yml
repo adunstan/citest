@@ -22,6 +22,7 @@ task:
       - echo on
       - cd C:\Users\ContainerAdministrator\AppData\Local\Temp\cirrus-ci-build
       - set
-      - perl -v
+      - perl -V
       - ps: nmake /?
+      - perl src/tools/msvc/mkvcbuild.pl
       - msbuild pgsql.sln
