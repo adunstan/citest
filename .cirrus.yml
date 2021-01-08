@@ -11,6 +11,7 @@ task:
     # - choco install --force -y visualstudio2019-workload-vctools --parameters="--add Microsoft.VisualStudio.Component.VC.140 --add Microsoft.VisualStudio.Component.VC.v141.x86.x64 --add Microsoft.VisualStudio.Component.VC.CLI.Support"
     - choco list --localonly
   build_script:
+      - dir /s /b "c:\Program Files (x86)\Microsoft Visual Studio\2019"
       - cd "c:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Auxiliary/Build"
       - vcvarsall x64
       - echo on
