@@ -1,14 +1,15 @@
 task:
   name: Windows
   windows_container:
-    image: cirrusci/windowsservercore:cmake
+    image: cirrusci/windowsservercore:2019
   install_script:
     - choco feature disable --name=showDownloadProgress
     - choco install -y winflexbison diffutils
     - rename c:\ProgramData\chocolatey\bin\win_flex.exe flex.exe
     - rename c:\ProgramData\chocolatey\bin\win_bison.exe bison.exe
     - choco install -y strawberryperl
-    - choco install --force -y visualstudio2019-workload-vctools --parameters="--add Microsoft.VisualStudio.Component.VC.140 --add Microsoft.VisualStudio.Component.VC.v141.x86.x64 --add Microsoft.VisualStudio.Component.VC.CLI.Support"
+    - choco install -y visualstudio2019buildtools
+    - choco install -y visualstudio2019-workload-vctools --parameters="--add Microsoft.VisualStudio.Component.VC.CLI.Support"
     - choco list --localonly
   build_script:
       - dir /s /b "c:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools"
