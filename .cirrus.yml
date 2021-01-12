@@ -1,28 +1,15 @@
 task:
   name: Windows
   windows_container:
-    image: cirrusci/windowsservercore:2019
-  install_script:
-    - choco feature disable --name=showDownloadProgress
-    - choco install -y winflexbison diffutils
-    - rename c:\ProgramData\chocolatey\bin\win_flex.exe flex.exe
-    - rename c:\ProgramData\chocolatey\bin\win_bison.exe bison.exe
-    - choco install -y strawberryperl
-    - choco install -y visualstudio2019buildtools
-    - choco install -y visualstudio2019-workload-vctools --parameters="--add Microsoft.VisualStudio.Component.VC.CLI.Support"
-    - choco list --localonly
+    dockerfile: ci/Dockerfile
   build_script:
-      - dir /s /b "c:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools"
       - cd "c:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Auxiliary/Build"
       - vcvarsall x64
       - echo on
       - cd C:\Users\ContainerAdministrator\AppData\Local\Temp\cirrus-ci-build
       - set PATH=C:\strawberry\perl\bin;%PATH%
-      - set
-      - perl -v
       - perl src/tools/msvc/mkvcbuild.pl
       - msbuild pgsql.sln
   test_script:
       - set PATH=C:\strawberry\perl\bin;%PATH%
-      - set
       - perl src/tools/msvc/vcregress.pl check
