@@ -9,6 +9,7 @@ task:
       - cd C:\Users\ContainerAdministrator\AppData\Local\Temp\cirrus-ci-build
       - set PATH=C:\strawberry\perl\bin;%PATH%
       - perl src/tools/msvc/mkvcbuild.pl
+      - set IgnoreWarnIntDirInTempDetected=true
       - msbuild pgsql.sln
   test_script:
       - set PATH=C:\strawberry\perl\bin;%PATH%
